@@ -1,0 +1,55 @@
+{
+    "name": "growpanel",
+    "version": "0.1.0",
+    "description": "TypeScript SDK for the GrowPanel subscription analytics REST API",
+    "type": "module",
+    "main": "dist/index.js",
+    "module": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js"
+        }
+    },
+    "scripts": {
+        "generate": "openapi-ts",
+        "generate:prod": "GROWPANEL_API_URL=https://api.growpanel.io openapi-ts",
+        "build": "tsup src/index.ts --format esm --dts --clean",
+        "dev": "tsup src/index.ts --format esm --dts --watch",
+        "typecheck": "tsc --noEmit",
+        "prepublishOnly": "npm run generate && npm run build"
+    },
+    "files": [
+        "dist/**/*",
+        "README.md",
+        "LICENSE"
+    ],
+    "engines": {
+        "node": ">=20.0.0"
+    },
+    "keywords": [
+        "growpanel",
+        "saas",
+        "metrics",
+        "mrr",
+        "arr",
+        "churn",
+        "subscription-analytics",
+        "recurring-revenue",
+        "sdk",
+        "typescript"
+    ],
+    "author": "GrowPanel ApS",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/growpanel/growpanel-sdk-js.git"
+    },
+    "devDependencies": {
+        "@hey-api/openapi-ts": "^0.64.0",
+        "@types/node": "^20.17.0",
+        "tsup": "^8.4.0",
+        "typescript": "^5.7.0"
+    }
+}
