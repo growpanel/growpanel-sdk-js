@@ -92,55 +92,54 @@ export class GrowPanel {
     };
 
     // ============================================================
-    // Data management
+    // Data management — the ingestion/import API. Nested under `data.*` to keep it
+    // visually separate from the analytics surfaces above (gp.customers, gp.plans).
+    // Same intent as the /data/* URL prefix in the REST API.
     // ============================================================
-    readonly planGroups = {
-        list:   sdk.getDataPlanGroups,
-        detail: sdk.getDataPlanGroupsById,
-        create: sdk.postDataPlanGroups,
-        update: sdk.putDataPlanGroupsById,
-        delete: sdk.deleteDataPlanGroupsById
-    };
-
-    readonly segments = {
-        list:   sdk.getDataSegments,
-        detail: sdk.getDataSegmentsById,
-        create: sdk.postDataSegments,
-        update: sdk.putDataSegmentsById,
-        delete: sdk.deleteDataSegmentsById
-    };
-
-    readonly dataSources = {
-        list:        sdk.getDataDataSources,
-        create:      sdk.postDataDataSources,
-        update:      sdk.putDataDataSourcesById,
-        delete:      sdk.deleteDataDataSourcesById,
-        getProgress: sdk.getDataDataSourcesByIdProgress,
-        reset:       sdk.postDataDataSourcesByIdReset,
-        fullImport:  sdk.postDataDataSourcesByIdFullImport,
-        abortImport: sdk.postDataDataSourcesByIdAbort
-    };
-
-    readonly dataCustomers = {
-        list:   sdk.getDataCustomers,
-        detail: sdk.getDataCustomersById,
-        create: sdk.postDataCustomers,
-        update: sdk.putDataCustomersById,
-        delete: sdk.deleteDataCustomersById
-    };
-
-    readonly dataInvoices = {
-        list:   sdk.getDataInvoices,
-        create: sdk.postDataInvoices,
-        update: sdk.putDataInvoicesById,
-        delete: sdk.deleteDataInvoicesById
-    };
-
-    readonly dataPlans = {
-        list:   sdk.getDataPlans,
-        create: sdk.postDataPlans,
-        update: sdk.putDataPlansById,
-        delete: sdk.deleteDataPlansById
+    readonly data = {
+        customers: {
+            list:   sdk.getDataCustomers,
+            detail: sdk.getDataCustomersById,
+            create: sdk.postDataCustomers,
+            update: sdk.putDataCustomersById,
+            delete: sdk.deleteDataCustomersById
+        },
+        plans: {
+            list:   sdk.getDataPlans,
+            create: sdk.postDataPlans,
+            update: sdk.putDataPlansById,
+            delete: sdk.deleteDataPlansById
+        },
+        planGroups: {
+            list:   sdk.getDataPlanGroups,
+            detail: sdk.getDataPlanGroupsById,
+            create: sdk.postDataPlanGroups,
+            update: sdk.putDataPlanGroupsById,
+            delete: sdk.deleteDataPlanGroupsById
+        },
+        segments: {
+            list:   sdk.getDataSegments,
+            detail: sdk.getDataSegmentsById,
+            create: sdk.postDataSegments,
+            update: sdk.putDataSegmentsById,
+            delete: sdk.deleteDataSegmentsById
+        },
+        invoices: {
+            list:   sdk.getDataInvoices,
+            create: sdk.postDataInvoices,
+            update: sdk.putDataInvoicesById,
+            delete: sdk.deleteDataInvoicesById
+        },
+        sources: {
+            list:        sdk.getDataDataSources,
+            create:      sdk.postDataDataSources,
+            update:      sdk.putDataDataSourcesById,
+            delete:      sdk.deleteDataDataSourcesById,
+            getProgress: sdk.getDataDataSourcesByIdProgress,
+            reset:       sdk.postDataDataSourcesByIdReset,
+            fullImport:  sdk.postDataDataSourcesByIdFullImport,
+            abortImport: sdk.postDataDataSourcesByIdAbort
+        }
     };
 
     // ============================================================

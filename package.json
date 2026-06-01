@@ -1,5 +1,5 @@
 {
-    "name": "growpanel",
+    "name": "@growpanel/sdk",
     "version": "0.1.1",
     "description": "TypeScript SDK for the GrowPanel subscription analytics REST API",
     "type": "module",
@@ -45,6 +45,9 @@
     "repository": {
         "type": "git",
         "url": "https://github.com/growpanel/growpanel-sdk-js.git"
+    },
+    "dependencies": {
+        "@hey-api/client-fetch": "^0.7.0"
     },
     "devDependencies": {
         "@hey-api/openapi-ts": "^0.64.0",

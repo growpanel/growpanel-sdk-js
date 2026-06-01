@@ -3,11 +3,11 @@
 Official TypeScript / JavaScript SDK for the [GrowPanel](https://growpanel.io) subscription analytics REST API.
 
 ```bash
-npm install growpanel
+npm install @growpanel/sdk
 ```
 
 ```typescript
-import { GrowPanel } from 'growpanel';
+import { GrowPanel } from '@growpanel/sdk';
 
 const gp = new GrowPanel({ apiKey: process.env.GROWPANEL_API_KEY! });
 
@@ -28,11 +28,25 @@ Get an API key from **app.growpanel.io → Account → API keys**. Pass it as `a
 
 The SDK groups operations by API area:
 
+**Analytics (read-only):**
 - `gp.reports.*` — MRR, leads, cohorts, cashflow, retention, churn
-- `gp.customers.*` — list + detail (analytics view)
-- `gp.plans.*` — list plans
-- `gp.planGroups.*`, `gp.segments.*`, `gp.dataSources.*`, `gp.dataCustomers.*`, `gp.dataInvoices.*` — data management
-- `gp.profile.*`, `gp.notifications.*`, `gp.webhooks.*` — account & integrations
+- `gp.customers.*` — list + detail (analytics view of subscribers)
+- `gp.plans.*` — list plans (analytics view)
+
+**Account & integrations:**
+- `gp.profile.*` — current user profile
+- `gp.notifications.*` — report subscriptions and alert thresholds
+- `gp.webhooks.*` — event subscriptions
+
+**Data ingestion (CRUD on a data source):**
+- `gp.data.customers.*` — create / read / update / delete raw customer rows
+- `gp.data.plans.*` — raw plan CRUD
+- `gp.data.planGroups.*` — group plans together
+- `gp.data.segments.*` — saved filter combinations
+- `gp.data.invoices.*` — raw invoice CRUD
+- `gp.data.sources.*` — connected billing systems, plus reset / import / abort actions
+
+The `data.*` nesting mirrors the `/data/*` URL prefix and keeps the ingestion API visually separate from the analytics surfaces.
 
 For anything not exposed as a named method, use `gp.raw.<operationId>(...)` — every endpoint in the OpenAPI spec is available there.
 
@@ -53,7 +67,7 @@ In CI, the [SDK pipeline](../growpanel-api/.github/workflows/sdk-pipeline.yml) d
 Every operation throws `GrowPanelError` on non-2xx responses. Inspect `err.status`, `err.statusText`, and `err.body` for context.
 
 ```typescript
-import { GrowPanel, GrowPanelError } from 'growpanel';
+import { GrowPanel, GrowPanelError } from '@growpanel/sdk';
 
 try {
     await gp.customers.detail({ path: { id: 'cus_doesnotexist' } });

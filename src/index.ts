@@ -7,5 +7,5 @@ export type { GrowPanelConfig } from './client.js';
 export { GrowPanelError } from './errors.js';
 
 // Re-export every generated type so consumers can import them by name
-// (e.g. `import type { MrrPeriodRow } from 'growpanel'`).
+// (e.g. `import type { MrrPeriodRow } from '@growpanel/sdk'`).
 export type * from './generated/types.gen.js';
