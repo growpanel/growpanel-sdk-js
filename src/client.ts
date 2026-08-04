@@ -70,6 +70,8 @@ export class GrowPanel {
         getCashflowOutstandingUnpaid:    sdk.getReportsCashflowOutstandingUnpaid,
         getChurnScheduled:               sdk.getReportsChurnScheduled,
         getChurnReasonsSummary:          sdk.getReportsChurnReasonsSummary,
+        getCancellationTiming:           sdk.getReportsCancellationTiming,
+        getCancellationTimingDetail:     sdk.getReportsCancellationTimingDetail,
         getMap:                          sdk.getReportsMap,
         getLatestActivity:               sdk.getReportsLatestActivity,
         getCustomerConcentration:        sdk.getReportsCustomerConcentration,
